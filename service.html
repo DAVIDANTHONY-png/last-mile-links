@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Last Mile Links | Our Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="shortcut icon" href="images/IMG-20260220-WA0012.jpg" type="image/x-icon">
+<link rel="stylesheet" href="style.css">
+<style>
+/* Services Page - Matching style.css exactly */
+
+/* ================= SERVICES HERO WITH SLIDESHOW ================= */
+.services-hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8%;
+    overflow: hidden;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 1.5s ease-in-out;
+    opacity: 0;
+    z-index: 1;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+.hero-slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7));
+    z-index: 1;
+}
+
+.services-hero-content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    max-width: 900px;
+    padding-top: 80px;
+}
+
+/* Text animation styles matching main site */
+.services-hero-content h1,
+.services-hero-content p {
+    will-change: transform, opacity;
+}
+
+.services-hero-content h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.services-hero-content p {
+    font-size: 18px;
+    color: #ddd;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Animation classes */
+.fade-out-text {
+    animation: fadeOut 0.35s ease-in both;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; transform: translateX(0); }
+    100% { opacity: 0; transform: translateX(-20px); }
+}
+
+.slide-in-text {
+    animation: slideIn 0.6s cubic-bezier(0.22, 0.9, 0.26, 1) both;
+}
+
+@keyframes slideIn {
+    0% { opacity: 0; transform: translateX(-40px); }
+    60% { opacity: 1; transform: translateX(8px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+.hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #ffb347 0%, #ffa500 100%);
+    color: #000;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 6px;
+    transition: all 0.3s cubic-bezier(0.22, 0.9, 0.26, 1);
+    box-shadow: 0 8px 20px rgba(255, 179, 71, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+}
+
+.hero-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 179, 71, 0.4);
+}
+
+/* ================= SERVICES OVERVIEW ================= */
+.services-overview {
+    padding: 100px 8%;
+    background: #f5f5f5;
+    color: #333;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #111;
+    letter-spacing: 1px;
+}
+
+.section-header p {
+    font-size: 16px;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ================= SERVICE CARDS ================= */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.service-feature-card {
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    border: 1px solid transparent;
+}
+
+.service-feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+/* Card Header with Dynamic Image */
+.card-header {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.card-image-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+}
+
+.card-image-slide.active {
+    opacity: 1;
+}
+
+.card-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%);
+    z-index: 2;
+}
+
+.card-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #fff;
+    border: 3px solid rgba(255,255,255,0.3);
+}
+
+/* ICT - Orange */
+.service-feature-card.ict .card-icon {
+    background: linear-gradient(135deg, #ffb347 0%, #ffa500 100%);
+}
+
+.service-feature-card.ict:hover {
+    border-color: rgba(255,179,71,0.3);
+}
+
+/* Academy - Blue */
+.service-feature-card.academy .card-icon {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+}
+
+.service-feature-card.academy:hover {
+    border-color: rgba(52,152,219,0.3);
+}
+
+/* Agriculture - Green */
+.service-feature-card.agriculture .card-icon {
+    background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+}
+
+.service-feature-card.agriculture:hover {
+    border-color: rgba(39,174,96,0.3);
+}
+
+.service-content-wrap {
+    padding: 30px;
+    text-align: left;
+}
+
+.service-content-wrap h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #111;
+    letter-spacing: 1px;
+}
+
+.service-content-wrap p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.service-features-list {
+    list-style: none;
+    margin-bottom: 25px;
+    padding: 0;
+}
+
+.service-features-list li {
+    padding: 8px 0;
+    color: #555;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.service-features-list li:last-child {
+    border-bottom: none;
+}
+
+.service-features-list li i {
+    font-size: 12px;
+    width: 20px;
+    text-align: center;
+}
+
+.service-feature-card.ict .service-features-list li i {
+    color: #ffb347;
+}
+
+.service-feature-card.academy .service-features-list li i {
+    color: #3498db;
+}
+
+.service-feature-card.agriculture .service-features-list li i {
+    color: #27ae60;
+}
+
+.service-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.22, 0.9, 0.26, 1);
+    color: #fff;
+    width: 100%;
+    justify-content: center;
+}
+
+.service-feature-card.ict .service-cta-btn {
+    background: linear-gradient(135deg, #ffb347 0%, #ffa500 100%);
+    color: #000;
+    box-shadow: 0 8px 20px rgba(255, 179, 71, 0.3);
+}
+
+.service-feature-card.ict .service-cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 179, 71, 0.4);
+}
+
+.service-feature-card.academy .service-cta-btn {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+}
+
+.service-feature-card.academy .service-cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(52, 152, 219, 0.4);
+}
+
+.service-feature-card.agriculture .service-cta-btn {
+    background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+    box-shadow: 0 8px 20px rgba(39, 174, 96, 0.3);
+}
+
+.service-feature-card.agriculture .service-cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(39, 174, 96, 0.4);
+}
+
+/* ================= PROCESS SECTION ================= */
+.process-section {
+    padding: 100px 8%;
+    background: #222;
+    color: #fff;
+    position: relative;
+}
+
+.process-section .section-header h2 {
+    color: #fff;
+}
+
+.process-section .section-header p {
+    color: #aaa;
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 50px auto 0;
+}
+
+.process-card {
+    text-align: center;
+    padding: 40px 25px;
+    background: #333;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.process-card:hover {
+    transform: translateY(-8px);
+    border-color: #444;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.process-number {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #ffb347 0%, #ffa500 100%);
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 20px;
+    margin: 0 auto 20px;
+}
+
+.process-card h4 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.process-card p {
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.6;
+}
+
+/* ================= IMPACT STATS SECTION (NEW) ================= */
+.impact-section {
+    padding: 100px 8%;
+    background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.impact-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,179,71,0.03) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.impact-section::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(52,152,219,0.03) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.impact-card {
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+}
+
+.impact-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 25px;
+    position: relative;
+}
+
+.impact-icon-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #ffb347 0%, #ffa500 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #000;
+    transform: rotate(-5deg);
+    transition: all 0.3s ease;
+}
+
+.impact-card:nth-child(2) .impact-icon-inner {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: #fff;
+    transform: rotate(5deg);
+}
+
+.impact-card:nth-child(3) .impact-icon-inner {
+    background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+    color: #fff;
+    transform: rotate(-3deg);
+}
+
+.impact-card:nth-child(4) .impact-icon-inner {
+    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+    color: #fff;
+    transform: rotate(3deg);
+}
+
+.impact-card:hover .impact-icon-inner {
+    transform: rotate(0deg) scale(1.1);
+}
+
+.impact-number {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.impact-label {
+    font-size: 14px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ================= PARTNERS TRUST BAR (NEW) ================= */
+.trust-bar {
+    padding: 60px 8%;
+    background: #f8f9fa;
+    text-align: center;
+}
+
+.trust-bar p {
+    font-size: 14px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.trust-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    opacity: 0.6;
+}
+
+.trust-logo {
+    font-size: 24px;
+    color: #999;
+    font-weight: 700;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+}
+
+.trust-logo:hover {
+    filter: grayscale(0%);
+    color: #666;
+    transform: scale(1.1);
+}
+
+/* ================= FAQ SECTION (NEW) ================= */
+.faq-section {
+    padding: 100px 8%;
+    background: #fff;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 25px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    color: #ffb347;
+}
+
+.faq-question h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
+    margin: 0;
+}
+
+.faq-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+    background: #ffb347;
+    color: #000;
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    padding-bottom: 25px;
+}
+
+.faq-answer p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+    margin: 0;
+    padding-right: 40px;
+}
+
+/* ================= CTA SECTION ================= */
+.services-cta {
+    padding: 100px 8%;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255,179,71,0.08) 0%, rgba(255,165,0,0.03) 100%);
+    position: relative;
+}
+
+.services-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('images/pattern-dots.png');
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.services-cta h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #111;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+}
+
+.services-cta p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-buttons-large {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-cta-large {
+    padding: 16px 35px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.22, 0.9, 0.26, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.btn-cta-ict {
+    background: linear-gradient(135deg, #ffb347 0%, #ffa500 100%);
+    color: #000;
+    box-shadow: 0 8px 20px rgba(255, 179, 71, 0.3);
+}
+
+.btn-cta-ict:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 179, 71, 0.4);
+}
+
+.btn-cta-academy {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+}
+
+.btn-cta-academy:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(52, 152, 219, 0.4);
+}
+
+.btn-cta-agriculture {
+    background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+    box-shadow: 0 8px 20px rgba(39, 174, 96, 0.3);
+}
+
+.btn-cta-agriculture:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(39, 174, 96, 0.4);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+    .services-grid,
+    .impact-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .services-hero-content h1 {
+        font-size: 32px;
+    }
+    
+    .services-grid,
+    .process-grid,
+    .impact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .services-hero {
+        min-height: 70vh;
+    }
+    
+    .services-overview,
+    .process-section,
+    .impact-section,
+    .trust-bar,
+    .faq-section,
+    .services-cta {
+        padding: 60px 5%;
+    }
+    
+    .section-header h2 {
+        font-size: 28px;
+    }
+    
+    .services-cta h2 {
+        font-size: 28px;
+    }
+    
+    .btn-cta-large {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .impact-number {
+        font-size: 36px;
+    }
+    
+    .trust-logos {
+        gap: 30px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= TOP BAR ================= -->
+<div class="top-bar">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+            <a href="services.html">Services ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="agriculture_landing_page.html">Agriculture</a></li>
+                <li><a href="ICT_Landing_page.html">ICT Consultation</a></li>
+                <li><a href="academy_landing_page.html">Academy</a></li>
+            </ul>
+        </li>
+        <li><a href="index.html#pt">Partners</a></li>
+        <li><a href="index.html#about-us">About us</a></li>
+        <li><a href="index.html#lml-programs-section">Programmes</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <a href="Login.html" class="login-btn">Login</a>
+</div>
+
+<!-- ================= NAVBAR ================= -->
+<div class="navbar">
+    <a href="index.html" class="logo" aria-label="Last Mile Links">
+        <img src="images/IMG-20260220-WA0011.jpg" alt="Last Mile Links logo">
+        <span class="text">Last Mile Links</span>
+    </a>
+</div>
+
+<!-- ================= SERVICES HERO WITH SLIDESHOW ================= -->
+<section class="services-hero">
+    <!-- Dynamic Background Slides -->
+    <div class="hero-slide active" style="background-image: url('images/WhatsApp Image 2026-02-20 at 6.19.47 AM.jpeg');"></div>
+    <div class="hero-slide" style="background-image: url('images/WhatsApp Image 2026-02-20 at 6.19.48 AM.jpeg');"></div>
+    <div class="hero-slide" style="background-image: url('images/WhatsApp Image 2026-02-20 at 6.19.49 AM.jpeg');"></div>
+    <div class="hero-slide" style="background-image: url('images/WhatsApp Image 2026-02-20 at 6.20.44 AM.jpeg');"></div>
+    <div class="hero-slide" style="background-image: url('images/WhatsApp Image 2026-02-20 at 6.20.46 AM.jpeg');"></div>
+
+    <div class="services-hero-content">
+        <h1 id="heroTitle">OUR SERVICES</h1>
+        <p id="heroText">We provide comprehensive solutions across technology, education, and agriculture to empower individuals and transform communities at the last mile.</p>
+        <a href="#services" class="hero-cta">Explore Services <i class="fas fa-arrow-down"></i></a>
+    </div>
+</section>
+
+<!-- ================= SERVICES OVERVIEW ================= -->
+<section id="services" class="services-overview">
+    <div class="section-header">
+        <h2>What We Offer</h2>
+        <p>Choose from our three core service pillars designed to meet your specific needs and drive sustainable growth.</p>
+    </div>
+
+    <div class="services-grid">
+        
+        <!-- ICT Consultation -->
+        <div class="service-feature-card ict">
+            <div class="card-header">
+                <!-- Dynamic Card Images -->
+                <div class="card-image-slide active" style="background-image: url('images/ict-1.jpg');"></div>
+                <div class="card-image-slide" style="background-image: url('images/ict-2.jpg');"></div>
+                <div class="card-image-slide" style="background-image: url('images/ict-3.jpg');"></div>
+                
+                <div class="card-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+            </div>
+            <div class="service-content-wrap">
+                <h3>ICT Consultation</h3>
+                <p>Transform your organization with cutting-edge technology solutions. From lab setups to enterprise infrastructure.</p>
+                <ul class="service-features-list">
+                    <li><i class="fas fa-check"></i> ICT Lab Setup & Upgrade</li>
+                    <li><i class="fas fa-check"></i> CBT Center Installation</li>
+                    <li><i class="fas fa-check"></i> Network & Server Configuration</li>
+                    <li><i class="fas fa-check"></i> CCTV & Security Systems</li>
+                    <li><i class="fas fa-check"></i> Office IT Infrastructure</li>
+                </ul>
+                <a href="ICT-form.html" class="service-cta-btn">
+                    Get Consultation <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Academy -->
+        <div class="service-feature-card academy">
+            <div class="card-header">
+                <!-- Dynamic Card Images -->
+                <div class="card-image-slide active" style="background-image: url('images/academy-1.jpg');"></div>
+                <div class="card-image-slide" style="background-image: url('images/academy-2.jpg');"></div>
+                <div class="card-image-slide" style="background-image: url('images/academy-3.jpg');"></div>
+                
+                <div class="card-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+            </div>
+            <div class="service-content-wrap">
+                <h3>Last Mile Academy</h3>
+                <p>Build your future with industry-relevant tech skills. Hands-on training with expert instructors.</p>
+                <ul class="service-features-list">
+                    <li><i class="fas fa-check"></i> Web Development & Software Engineering</li>
+                    <li><i class="fas fa-check"></i> Data Science & AI</li>
+                    <li><i class="fas fa-check"></i> Cyber Security</li>
+                    <li><i class="fas fa-check"></i> Cloud Computing</li>
+                    <li><i class="fas fa-check"></i> Digital Marketing & Design</li>
+                </ul>
+                <a href="academy_form.html" class="service-cta-btn">
+                    Enroll Now <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Agriculture -->
+        <div class="service-feature-card agriculture">
+            <div class="card-header">
+                <!-- Dynamic Card Images -->
+                <div class="card-image-slide active" style="background-image: url('images/agriculture-1.jpg');"></div>
+                <div class="card-image-slide" style="background-image: url('images/agriculture-2.jpg');"></div>
+                <div class="card-image-slide" style="background-image: url('images/agriculture-3.jpg');"></div>
+                
+                <div class="card-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+            </div>
+            <div class="service-content-wrap">
+                <h3>Agriculture Services</h3>
+                <p>Modernize your farming with comprehensive support. Access funding, equipment, training, and markets.</p>
+                <ul class="service-features-list">
+                    <li><i class="fas fa-check"></i> Farm Setup & Mechanization</li>
+                    <li><i class="fas fa-check"></i> Agricultural Financing</li>
+                    <li><i class="fas fa-check"></i> Farm Inputs & Irrigation</li>
+                    <li><i class="fas fa-check"></i> Training & Extension Services</li>
+                    <li><i class="fas fa-check"></i> Market Access & Storage</li>
+                </ul>
+                <a href="agriculture_form.html" class="service-cta-btn">
+                    Apply Now <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= PROCESS SECTION ================= -->
+<section class="process-section">
+    <div class="section-header">
+        <h2>How It Works</h2>
+        <p>Getting started with any of our services is simple and straightforward.</p>
+    </div>
+
+    <div class="process-grid">
+        <div class="process-card">
+            <div class="process-number">1</div>
+            <h4>Choose Service</h4>
+            <p>Select the service that matches your needs from our three core offerings.</p>
+        </div>
+        <div class="process-card">
+            <div class="process-number">2</div>
+            <h4>Fill Form</h4>
+            <p>Complete our detailed form with your specific requirements and preferences.</p>
+        </div>
+        <div class="process-card">
+            <div class="process-number">3</div>
+            <h4>We Review</h4>
+            <p>Our team assesses your application and prepares a tailored solution.</p>
+        </div>
+        <div class="process-card">
+            <div class="process-number">4</div>
+            <h4>Get Started</h4>
+            <p>We contact you to begin implementation, training, or service delivery.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= IMPACT STATS SECTION (REPLACES TESTIMONIALS) ================= -->
+<section class="impact-section">
+    <div class="section-header">
+        <h2>Our Impact</h2>
+        <p>Real numbers that show the difference we're making in communities across Nigeria.</p>
+    </div>
+
+    <div class="impact-grid">
+        <div class="impact-card">
+            <div class="impact-icon">
+                <div class="impact-icon-inner">
+                    <i class="fas fa-users"></i>
+                </div>
+            </div>
+            <div class="impact-number" data-target="15000">0</div>
+            <div class="impact-label">People Trained</div>
+        </div>
+        
+        <div class="impact-card">
+            <div class="impact-icon">
+                <div class="impact-icon-inner">
+                    <i class="fas fa-school"></i>
+                </div>
+            </div>
+            <div class="impact-number" data-target="120">0</div>
+            <div class="impact-label">ICT Labs Built</div>
+        </div>
+        
+        <div class="impact-card">
+            <div class="impact-icon">
+                <div class="impact-icon-inner">
+                    <i class="fas fa-tractor"></i>
+                </div>
+            </div>
+            <div class="impact-number" data-target="850">0</div>
+            <div class="impact-label">Farms Supported</div>
+        </div>
+        
+        <div class="impact-card">
+            <div class="impact-icon">
+                <div class="impact-icon-inner">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+            </div>
+            <div class="impact-number" data-target="3200">0</div>
+            <div class="impact-label">Jobs Created</div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= TRUST BAR ================= -->
+<section class="trust-bar">
+    <p>Trusted by leading organizations</p>
+    <div class="trust-logos">
+        <div class="trust-logo">UNICEF</div>
+        <div class="trust-logo">WORLD BANK</div>
+        <div class="trust-logo">AFRICA-TECH</div>
+        <div class="trust-logo">FARM-NG</div>
+        <div class="trust-logo">TECH-HUB</div>
+    </div>
+</section>
+
+<!-- ================= FAQ SECTION ================= -->
+<section class="faq-section">
+    <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Get quick answers to common questions about our services.</p>
+    </div>
+    
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question">
+                <h4>How long does ICT lab setup typically take?</h4>
+                <div class="faq-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div class="faq-answer">
+                <p>Most ICT lab installations are completed within 2-4 weeks, depending on the size and complexity. We work efficiently to minimize disruption to your operations.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <h4>What are the requirements for Academy enrollment?</h4>
+                <div class="faq-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div class="faq-answer">
+                <p>Basic computer literacy is recommended but not required. You need a willingness to learn and either a personal laptop or the option to use our facilities. Payment plans are available.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <h4>How does agricultural financing work?</h4>
+                <div class="faq-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div class="faq-answer">
+                <p>We partner with microfinance institutions to provide loans with flexible repayment terms. After assessing your farm and business plan, we connect you with appropriate funding options.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <h4>Do you offer support after project completion?</h4>
+                <div class="faq-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div class="faq-answer">
+                <p>Absolutely. All our services include a support period: 6 months for ICT installations, lifetime alumni network for Academy graduates, and ongoing extension services for farmers.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <h4>Can I switch between service tracks?</h4>
+                <div class="faq-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div class="faq-answer">
+                <p>Yes, many of our clients use multiple services. For example, Academy graduates often return for ICT consultation for their businesses, and farmers sometimes join our digital literacy programs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= CTA SECTION ================= -->
+<section class="services-cta">
+    <h2>Ready to Get Started?</h2>
+    <p>Join thousands of individuals and organizations already benefiting from our services. Choose your path today.</p>
+    <div class="cta-buttons-large">
+        <a href="ICT_Landing_page.html" class="btn-cta-large btn-cta-ict">
+            <i class="fas fa-laptop-code"></i> ICT Consultation
+        </a>
+        <a href="academy_landing_page.html" class="btn-cta-large btn-cta-academy">
+            <i class="fas fa-graduation-cap"></i> Join Academy
+        </a>
+        <a href="agriculture_landing_page.html" class="btn-cta-large btn-cta-agriculture">
+            <i class="fas fa-seedling"></i> Agriculture Services
+        </a>
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>About Last Mile Links</h3>
+            <p>Empowering communities through technology, education, and sustainable agriculture.</p>
+            <div class="social-links">
+                <a href="#" class="social-icon">f</a>
+                <a href="#" class="social-icon">𝕏</a>
+                <a href="#" class="social-icon">in</a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="index.html#about-us">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Our Services</h3>
+            <ul class="footer-links">
+                <li><a href="ICT_Landing_page.html">ICT Consultation</a></li>
+                <li><a href="academy_landing_page.html">Academy</a></li>
+                <li><a href="agriculture_landing_page.html">Agriculture</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Contact</h3>
+            <div class="contact-info">
+                <p>📍 Innovation District, Nigeria</p>
+                <p>📧 lastmilelinks@gmail.com</p>
+                <p>📱 +234 XXX XXX XXXX</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Last Mile Links. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+// ================= HERO SLIDESHOW =================
+const heroSlides = document.querySelectorAll('.services-hero .hero-slide');
+let currentHeroSlide = 0;
+
+function nextHeroSlide() {
+    heroSlides[currentHeroSlide].classList.remove('active');
+    currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+    heroSlides[currentHeroSlide].classList.add('active');
+}
+
+setInterval(nextHeroSlide, 3000);
+
+// ================= DYNAMIC HERO TEXT =================
+const heroTitle = document.getElementById('heroTitle');
+const heroText = document.getElementById('heroText');
+
+const heroTitles = [
+    'OUR SERVICES',
+    'ICT SOLUTIONS',
+    'LEARN WITH US',
+    'GROW WITH US'
+];
+
+const heroTexts = [
+    'We provide comprehensive solutions across technology, education, and agriculture to empower individuals and transform communities at the last mile.',
+    'Transform your organization with cutting-edge technology infrastructure, from computer labs to enterprise networks.',
+    'Build your future with industry-relevant tech skills. Hands-on training with expert instructors and job placement support.',
+    'Modernize your farming with comprehensive agricultural support. Access funding, equipment, training, and market linkages.'
+];
+
+let currentTextIndex = 0;
+
+function updateHeroText() {
+    // Fade out
+    heroTitle.classList.add('fade-out-text');
+    heroText.classList.add('fade-out-text');
+    
+    setTimeout(() => {
+        // Change text
+        currentTextIndex = (currentTextIndex + 1) % heroTitles.length;
+        heroTitle.textContent = heroTitles[currentTextIndex];
+        heroText.textContent = heroTexts[currentTextIndex];
+        
+        // Remove fade out, add slide in
+        heroTitle.classList.remove('fade-out-text');
+        heroText.classList.remove('fade-out-text');
+        
+        heroTitle.classList.add('slide-in-text');
+        heroText.classList.add('slide-in-text');
+        
+        // Remove slide in after animation
+        setTimeout(() => {
+            heroTitle.classList.remove('slide-in-text');
+            heroText.classList.remove('slide-in-text');
+        }, 600);
+    }, 350);
+}
+
+// Change text every 3 seconds (synced with image change)
+setInterval(updateHeroText, 3000);
+
+// ================= CARD IMAGE SLIDESHOWS =================
+const serviceCards = document.querySelectorAll('.service-feature-card');
+
+serviceCards.forEach(card => {
+    const slides = card.querySelectorAll('.card-image-slide');
+    let currentSlide = 0;
+    
+    setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }, 3000);
+});
+
+// ================= IMPACT COUNTER ANIMATION =================
+const counters = document.querySelectorAll('.impact-number');
+
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const counter = entry.target;
+            const target = parseInt(counter.getAttribute('data-target'));
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+            
+            const updateCounter = () => {
+                current += step;
+                if (current < target) {
+                    counter.textContent = Math.floor(current).toLocaleString();
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target.toLocaleString() + '+';
+                }
+            };
+            
+            updateCounter();
+            counterObserver.unobserve(counter);
+        }
+    });
+}, { threshold: 0.5 });
+
+counters.forEach(counter => counterObserver.observe(counter));
+
+// ================= FAQ ACCORDION =================
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    
+    question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all
+        faqItems.forEach(i => i.classList.remove('active'));
+        
+        // Open clicked if wasn't active
+        if (!isActive) {
+            item.classList.add('active');
+        }
+    });
+});
+
+// ================= SMOOTH SCROLL =================
+document.querySelector('.hero-cta').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Last Mile Links | ICT Consultation</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="shortcut icon" href="images/IMG-20260220-WA0012.jpg" type="image/x-icon">
+<link rel="stylesheet" href="ICT-form.css">
+<style>
+    /* Dynamic hero slides */
+    .form-hero {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero-slides {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+    
+    .hero-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+    }
+    
+    .hero-slide.active {
+        opacity: 1;
+    }
+    
+    .hero-slide::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.6);
+    }
+    
+    .form-hero-content {
+        position: relative;
+        z-index: 2;
+    }
+</style>
+</head>
+<body>
+
+<!-- ================= TOP BAR ================= -->
+<div class="top-bar">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+            <a href="#">Services ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Agriculture</a></li>
+                <li><a href="#">ICT Consultation</a></li>
+                <li><a href="#">Academy</a></li>
+            </ul>
+        </li>
+        <li><a href="index.html#pt">Partners</a></li>
+        <li><a href="index.html#about-us">About us</a></li>
+        <li><a href="index.html#lml-programs-section">Programmes</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <a href="Login.html" class="login-btn">Login</a>
+</div>
+
+<!-- ================= NAVBAR ================= -->
+<div class="navbar">
+    <a href="index.html" class="logo" aria-label="Last Mile Links">
+        <img src="images/IMG-20260220-WA0011.jpg" alt="Last Mile Links logo">
+        <span class="text">Last Mile Links</span>
+    </a>
+</div>
+
+<!-- ================= FORM HERO ================= -->
+<section class="form-hero">
+    <div class="hero-slides">
+        <div class="hero-slide active" style="background-image: url('images/WhatsApp Image 2026-02-20 at 6.20.44 AM.jpeg')"></div>
+        <div class="hero-slide" style="background-image: url('images/WhatsApp Image 2026-02-20 at 6.19.47 AM.jpeg')"></div>
+        <div class="hero-slide" style="background-image: url('images/WhatsApp Image 2026-02-20 at 6.20.46 AM.jpeg')"></div>
+        <div class="hero-slide" style="background-image: url('images/WhatsApp Image 2026-02-20 at 6.19.50 AM.jpeg')"></div>
+        <div class="hero-slide" style="background-image: url('images/WhatsApp Image 2026-02-20 at 6.20.45 AM (1).jpeg')"></div>
+    </div>
+    
+    <div class="form-hero-content">
+        <h1>ICT CONSULTATION</h1>
+        <p>Complete the form below and our team will reach out to discuss your technology needs.</p>
+    </div>
+</section>
+
+<!-- ================= MAIN FORM SECTION ================= -->
+<section class="form-section">
+    <div class="form-container">
+        
+        <!-- Progress Steps -->
+        <div class="form-progress">
+            <div class="progress-step active" data-step="1">
+                <div class="step-number">1</div>
+                <span>Personal</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="2">
+                <div class="step-number">2</div>
+                <span>Service</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="3">
+                <div class="step-number">3</div>
+                <span>Details</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="4">
+                <div class="step-number">4</div>
+                <span>Schedule</span>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form id="consultationForm" class="consultation-form" novalidate>
+            
+            <!-- Step 1: Personal Information -->
+            <div class="form-step active" data-step="1">
+                <h2><i class="fas fa-user"></i> Personal Information</h2>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fullName">Full Name <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" placeholder="John Doe" required>
+                        <span class="error-message">Please enter your full name</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="+234 XXX XXX XXXX" required>
+                        <span class="error-message">Please enter a valid phone number</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        <span class="error-message">Please enter a valid email address</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="organization">Organization/Institution</label>
+                        <input type="text" id="organization" name="organization" placeholder="Company or School Name">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="location">Location (State & City) <span class="required">*</span></label>
+                        <input type="text" id="location" name="location" placeholder="Lagos, Nigeria" required>
+                        <span class="error-message">Please enter your location</span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-next" data-next="2">Next Step <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Step 2: Service Type -->
+            <div class="form-step" data-step="2">
+                <h2><i class="fas fa-laptop-code"></i> Select Service Type</h2>
+                
+                <div class="service-grid">
+                    <label class="service-card">
+                        <input type="radio" name="consultation" value="ict-lab-setup" required>
+                        <div class="service-content">
+                            <i class="fas fa-desktop"></i>
+                            <h4>ICT Lab Setup</h4>
+                            <p>Complete computer lab installation</p>
+                        </div>
+                    </label>
+
+                    <label class="service-card">
+                        <input type="radio" name="consultation" value="ict-lab-upgrade">
+                        <div class="service-content">
+                            <i class="fas fa-arrow-up"></i>
+                            <h4>ICT Lab Upgrade</h4>
+                            <p>Modernize existing facilities</p>
+                        </div>
+                    </label>
+
+                    <label class="service-card">
+                        <input type="radio" name="consultation" value="cbt-setup">
+                        <div class="service-content">
+                            <i class="fas fa-clipboard-check"></i>
+                            <h4>CBT Center Setup</h4>
+                            <p>Computer-based testing center</p>
+                        </div>
+                    </label>
+
+                    <label class="service-card">
+                        <input type="radio" name="consultation" value="cbt-upgrade">
+                        <div class="service-content">
+                            <i class="fas fa-tools"></i>
+                            <h4>CBT Center Upgrade</h4>
+                            <p>Enhance testing infrastructure</p>
+                        </div>
+                    </label>
+
+                    <label class="service-card">
+                        <input type="radio" name="consultation" value="networking">
+                        <div class="service-content">
+                            <i class="fas fa-network-wired"></i>
+                            <h4>Networking & Internet</h4>
+                            <p>LAN/WAN installation & setup</p>
+                        </div>
+                    </label>
+
+                    <label class="service-card">
+                        <input type="radio" name="consultation" value="server">
+                        <div class="service-content">
+                            <i class="fas fa-server"></i>
+                            <h4>Server Installation</h4>
+                            <p>Enterprise server configuration</p>
+                        </div>
+                    </label>
+
+                    <label class="service-card">
+                        <input type="radio" name="consultation" value="office-it">
+                        <div class="service-content">
+                            <i class="fas fa-building"></i>
+                            <h4>Office IT Setup</h4>
+                            <p>Complete office technology</p>
+                        </div>
+                    </label>
+
+                    <label class="service-card">
+                        <input type="radio" name="consultation" value="cctv">
+                        <div class="service-content">
+                            <i class="fas fa-video"></i>
+                            <h4>CCTV Installation</h4>
+                            <p>Security camera systems</p>
+                        </div>
+                    </label>
+
+                    <label class="service-card full-width">
+                        <input type="radio" name="consultation" value="general">
+                        <div class="service-content">
+                            <i class="fas fa-headset"></i>
+                            <h4>General ICT Support</h4>
+                            <p>Technical support & maintenance</p>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-prev" data-prev="1"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="btn-next" data-next="3">Next Step <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Step 3: Project Details -->
+            <div class="form-step" data-step="3">
+                <h2><i class="fas fa-info-circle"></i> Project Details</h2>
+                
+                <div class="form-group full-width">
+                    <label for="description">Briefly Describe Your ICT Needs <span class="required">*</span></label>
+                    <textarea id="description" name="description" rows="4" placeholder="Tell us about your project requirements..." required></textarea>
+                    <span class="error-message">Please describe your needs</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Do You Have Existing Equipment? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="equipment" value="yes" required>
+                            <span>Yes, we have equipment</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="equipment" value="no">
+                            <span>No, starting fresh</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group full-width conditional-field" id="equipmentList">
+                    <label for="equipmentDetails">List Available Equipment</label>
+                    <textarea id="equipmentDetails" name="equipmentDetails" rows="3" placeholder="e.g., 10 Dell computers, 1 HP printer..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="startDate">Expected Start Date <span class="required">*</span></label>
+                    <input type="date" id="startDate" name="startDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Budget Range</label>
+                    <div class="budget-options">
+                        <label class="budget-card">
+                            <input type="radio" name="budget" value="below-500k">
+                            <span>Below ₦500K</span>
+                        </label>
+                        <label class="budget-card">
+                            <input type="radio" name="budget" value="500k-1m">
+                            <span>₦500K – ₦1M</span>
+                        </label>
+                        <label class="budget-card">
+                            <input type="radio" name="budget" value="1m-5m">
+                            <span>₦1M – ₦5M</span>
+                        </label>
+                        <label class="budget-card">
+                            <input type="radio" name="budget" value="above-5m">
+                            <span>₦5M+</span>
+                        </label>
+                        <label class="budget-card">
+                            <input type="radio" name="budget" value="unsure">
+                            <span>Not Sure</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-prev" data-prev="2"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="btn-next" data-next="4">Next Step <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Step 4: Schedule & Submit -->
+            <div class="form-step" data-step="4">
+                <h2><i class="fas fa-calendar-check"></i> Schedule Consultation</h2>
+                
+                <div class="form-group">
+                    <label>Preferred Consultation Method <span class="required">*</span></label>
+                    <div class="method-options">
+                        <label class="method-card">
+                            <input type="radio" name="method" value="physical" required>
+                            <i class="fas fa-handshake"></i>
+                            <span>Physical Meeting</span>
+                        </label>
+                        <label class="method-card">
+                            <input type="radio" name="method" value="virtual">
+                            <i class="fas fa-video"></i>
+                            <span>Virtual (Zoom/Meet)</span>
+                        </label>
+                        <label class="method-card">
+                            <input type="radio" name="method" value="phone">
+                            <i class="fas fa-phone"></i>
+                            <span>Phone Call</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="preferredDate">Preferred Date & Time <span class="required">*</span></label>
+                    <input type="datetime-local" id="preferredDate" name="preferredDate" required>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="additional">Additional Information</label>
+                    <textarea id="additional" name="additional" rows="3" placeholder="Any special requirements or notes..."></textarea>
+                </div>
+
+                <div class="form-group consent-box">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="consent" name="consent" required>
+                        <span class="checkmark"></span>
+                        <span class="consent-text">I agree to be contacted regarding my ICT consultation request. <span class="required">*</span></span>
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-prev" data-prev="3"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="submit" id="submitBtn" class="btn-submit" disabled>
+                        <i class="fas fa-paper-plane"></i> Submit Request
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-bottom">
+        <p>&copy; 2026 Last Mile Links. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="ICT-form.js"></script>
+<script>
+    // Hero image rotation - changes every 3 seconds
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+    
+    function rotateHero() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+    
+    setInterval(rotateHero, 3000);
+</script>
+</body>
+</html>

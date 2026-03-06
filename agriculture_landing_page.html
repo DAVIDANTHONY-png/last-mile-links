@@ -1,0 +1,2337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Last Mile Links | Agriculture Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="shortcut icon" href="images/IMG-20260220-WA0012.jpg" type="image/x-icon">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    :root {
+        --primary: #ffb347;
+        --primary-light: #ffcc80;
+        --primary-dark: #ffa500;
+        --dark: #111;
+        --darker: #0a0a0a;
+        --light: #fff;
+        --gray: #aaa;
+        --transition-smooth: cubic-bezier(0.22, 0.9, 0.26, 1);
+        --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background: var(--darker);
+        color: var(--light);
+        overflow-x: hidden;
+        line-height: 1.6;
+    }
+    
+    /* ================= BUTTONS ================= */
+    .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 32px;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        color: var(--dark);
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s var(--transition-smooth);
+        border: none;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.5s;
+    }
+    
+    .btn-primary:hover::before {
+        left: 100%;
+    }
+    
+    .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(255, 179, 71, 0.4);
+    }
+    
+    .btn-primary:active {
+        transform: translateY(-1px);
+    }
+    
+    .btn-outline {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 32px;
+        background: transparent;
+        color: var(--primary);
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 14px;
+        border: 2px solid var(--primary);
+        cursor: pointer;
+        transition: all 0.3s var(--transition-smooth);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .btn-outline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: var(--primary);
+        transition: width 0.3s var(--transition-smooth);
+        z-index: -1;
+    }
+    
+    .btn-outline:hover::before {
+        width: 100%;
+    }
+    
+    .btn-outline:hover {
+        color: var(--dark);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(255, 179, 71, 0.3);
+    }
+    
+    /* ================= TOP BAR ================= */
+    .top-bar {
+        background: rgba(0,0,0,0.9);
+        padding: 12px 8%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 2000;
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255,179,71,0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .top-bar ul {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+    }
+    
+    .top-bar a {
+        color: var(--gray);
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .top-bar a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: width 0.3s ease;
+    }
+    
+    .top-bar a:hover {
+        color: var(--primary);
+    }
+    
+    .top-bar a:hover::after {
+        width: 100%;
+    }
+    
+    .dropdown {
+        position: relative;
+    }
+    
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: rgba(0,0,0,0.95);
+        min-width: 200px;
+        padding: 15px 0;
+        border-radius: 8px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255,179,71,0.2);
+        margin-top: 10px;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .dropdown-menu li {
+        padding: 0;
+    }
+    
+    .dropdown-menu a {
+        display: block;
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    
+    .login-btn {
+        padding: 8px 20px;
+        background: transparent;
+        border: 1px solid var(--primary);
+        color: var(--primary);
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .login-btn:hover {
+        background: var(--primary);
+        color: var(--dark);
+        transform: translateY(-2px);
+    }
+    
+    /* ================= NAVBAR ================= */
+    .navbar {
+        position: fixed;
+        top: 50px;
+        width: 100%;
+        padding: 15px 8%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1500;
+        transition: all 0.3s ease;
+        background: transparent;
+    }
+    
+    .navbar.scrolled {
+        background: rgba(0,0,0,0.95);
+        top: 45px;
+        padding: 10px 8%;
+        backdrop-filter: blur(10px);
+    }
+    
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: var(--light);
+    }
+    
+    .logo img {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--primary);
+        transition: all 0.3s ease;
+    }
+    
+    .logo:hover img {
+        transform: rotate(10deg) scale(1.1);
+        box-shadow: 0 0 20px rgba(255,179,71,0.5);
+    }
+    
+    .logo .text {
+        font-weight: 700;
+        font-size: 18px;
+        letter-spacing: 0.5px;
+    }
+    
+    /* ================= AGRICULTURE HERO ================= */
+    .agriculture-hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 120px 8% 80px;
+        overflow: hidden;
+    }
+    
+    .hero-bg-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+    }
+    
+    .hero-bg-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out, transform 6s ease;
+        transform: scale(1.1);
+    }
+    
+    .hero-bg-slide.active {
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8));
+        z-index: -1;
+    }
+    
+    .agriculture-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        opacity: 0.4;
+        pointer-events: none;
+        z-index: 0;
+    }
+    
+    /* Organic flowing shapes */
+    .organic-shape {
+        position: absolute;
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        background: linear-gradient(135deg, rgba(255, 179, 71, 0.1) 0%, rgba(255, 165, 0, 0.05) 100%);
+        animation: morph 15s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 1;
+    }
+    
+    .organic-shape-1 {
+        width: 600px;
+        height: 600px;
+        top: -200px;
+        right: -100px;
+        animation-delay: 0s;
+    }
+    
+    .organic-shape-2 {
+        width: 400px;
+        height: 400px;
+        bottom: -100px;
+        left: -100px;
+        animation-delay: -5s;
+        background: linear-gradient(135deg, rgba(255, 179, 71, 0.08) 0%, rgba(255, 140, 0, 0.03) 100%);
+    }
+    
+    @keyframes morph {
+        0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: rotate(0deg); }
+        25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; transform: rotate(5deg); }
+        50% { border-radius: 50% 60% 30% 60% / 30% 40% 70% 60%; transform: rotate(0deg); }
+        75% { border-radius: 60% 40% 60% 30% / 70% 30% 50% 60%; transform: rotate(-5deg); }
+    }
+    
+    /* Agriculture content styling */
+    .agriculture-content {
+        position: relative;
+        z-index: 5;
+        max-width: 650px;
+        animation: fadeInUp 1s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .agriculture-content h1 {
+        font-size: 52px;
+        margin-bottom: 24px;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--primary) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        background-size: 200% auto;
+        animation: shine 3s linear infinite;
+        line-height: 1.2;
+        font-weight: 700;
+    }
+    
+    @keyframes shine {
+        to { background-position: 200% center; }
+    }
+    
+    .agriculture-content p {
+        font-size: 17px;
+        color: #ddd;
+        margin-bottom: 35px;
+        line-height: 1.9;
+        animation: fadeInUp 1s ease-out 0.2s backwards;
+    }
+    
+    .agriculture-content .btn-primary {
+        animation: fadeInUp 1s ease-out 0.4s backwards;
+    }
+    
+    /* Growing vine decoration */
+    .vine-decoration {
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 300px;
+        height: 500px;
+        opacity: 0.15;
+        pointer-events: none;
+        z-index: 2;
+    }
+    
+    .vine-path {
+        stroke: var(--primary);
+        stroke-width: 2;
+        fill: none;
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: growVine 3s ease-out forwards;
+    }
+    
+    @keyframes growVine {
+        to { stroke-dashoffset: 0; }
+    }
+    
+    /* Progress dots for background slider */
+    .bg-slider-dots {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 12px;
+        z-index: 10;
+    }
+    
+    .bg-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .bg-dot::after {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        width: 18px;
+        height: 18px;
+        border: 2px solid transparent;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+    
+    .bg-dot.active {
+        background: var(--primary);
+        transform: scale(1.2);
+    }
+    
+    .bg-dot.active::after {
+        border-color: var(--primary);
+    }
+    
+    .bg-dot:hover {
+        background: rgba(255,179,71,0.7);
+    }
+    
+    /* Floating particles effect */
+    .particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 3;
+    }
+    
+    .particle {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: rgba(255, 179, 71, 0.4);
+        border-radius: 50%;
+        animation: float 15s infinite;
+        box-shadow: 0 0 10px rgba(255,179,71,0.5);
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+    }
+    
+    /* ================= SERVICES SECTION ================= */
+    .what-we-do {
+        background: var(--dark);
+        padding: 100px 8%;
+        position: relative;
+    }
+    
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .what-we-do h2 {
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 15px;
+        color: var(--light);
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .what-we-do h2::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: var(--primary);
+        border-radius: 2px;
+    }
+    
+    .subtitle {
+        text-align: center;
+        color: var(--gray);
+        font-size: 16px;
+        margin-bottom: 60px;
+        margin-top: 25px;
+    }
+    
+    /* Service cards with organic hover */
+    .agri-service-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+    
+    .agri-service-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 179, 71, 0.2);
+        border-radius: 20px;
+        padding: 40px 30px;
+        text-align: center;
+        transition: all 0.4s var(--transition-smooth);
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    
+    .agri-service-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .agri-service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at center, rgba(255, 179, 71, 0.15) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    
+    .agri-service-card:hover::before {
+        opacity: 1;
+    }
+    
+    .agri-service-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        border-color: rgba(255, 179, 71, 0.5);
+        box-shadow: 0 20px 40px rgba(255, 179, 71, 0.2);
+    }
+    
+    .agri-service-card:active {
+        transform: translateY(-5px) scale(1.01);
+    }
+    
+    .agri-icon {
+        width: 85px;
+        height: 85px;
+        background: linear-gradient(135deg, rgba(255, 179, 71, 0.2) 0%, rgba(255, 165, 0, 0.1) 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+        font-size: 32px;
+        color: var(--primary);
+        transition: all 0.4s var(--transition-bounce);
+        border: 2px solid rgba(255, 179, 71, 0.3);
+        position: relative;
+    }
+    
+    .agri-icon::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        border: 2px dashed rgba(255,179,71,0.3);
+        border-radius: 50%;
+        animation: rotate 20s linear infinite;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    .agri-service-card:hover .agri-icon::after {
+        opacity: 1;
+    }
+    
+    .agri-service-card:hover .agri-icon {
+        transform: scale(1.15) rotate(10deg);
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        color: var(--dark);
+        box-shadow: 0 15px 35px rgba(255, 179, 71, 0.5);
+    }
+    
+    .agri-service-card h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+        color: var(--light);
+        transition: color 0.3s ease;
+    }
+    
+    .agri-service-card:hover h3 {
+        color: var(--primary);
+    }
+    
+    .agri-service-card p {
+        font-size: 14px;
+        color: var(--gray);
+        line-height: 1.7;
+        transition: color 0.3s ease;
+    }
+    
+    .agri-service-card:hover p {
+        color: #ccc;
+    }
+    
+    /* ================= CROP SHOWCASE ================= */
+    .crop-showcase {
+        background: linear-gradient(135deg, rgba(255, 179, 71, 0.05) 0%, rgba(0, 0, 0, 0.3) 100%);
+        border-radius: 30px;
+        padding: 60px;
+        margin: 60px 8%;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 179, 71, 0.1);
+    }
+    
+    .crop-tabs {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 50px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .crop-tab {
+        padding: 14px 28px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 179, 71, 0.2);
+        border-radius: 30px;
+        color: var(--gray);
+        cursor: pointer;
+        transition: all 0.3s var(--transition-smooth);
+        font-weight: 600;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .crop-tab::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+    }
+    
+    .crop-tab:hover, .crop-tab.active {
+        color: var(--dark);
+        border-color: var(--primary);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 179, 71, 0.3);
+    }
+    
+    .crop-tab:hover::before, .crop-tab.active::before {
+        opacity: 1;
+    }
+    
+    .crop-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    
+    .crop-image-container {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        height: 450px;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        transform: perspective(1000px) rotateY(-5deg);
+        transition: transform 0.5s var(--transition-smooth);
+    }
+    
+    .crop-image-container:hover {
+        transform: perspective(1000px) rotateY(0deg);
+    }
+    
+    .crop-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease, opacity 0.5s ease;
+    }
+    
+    .crop-image-container:hover .crop-image {
+        transform: scale(1.1);
+    }
+    
+    .crop-stats {
+        position: absolute;
+        bottom: 25px;
+        left: 25px;
+        right: 25px;
+        display: flex;
+        gap: 15px;
+    }
+    
+    .crop-stat {
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(15px);
+        padding: 18px;
+        border-radius: 16px;
+        flex: 1;
+        text-align: center;
+        border: 1px solid rgba(255, 179, 71, 0.3);
+        transition: all 0.3s ease;
+    }
+    
+    .crop-stat:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+        box-shadow: 0 10px 30px rgba(255,179,71,0.2);
+    }
+    
+    .crop-stat-value {
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--primary);
+        display: block;
+        transition: all 0.3s ease;
+        margin-bottom: 5px;
+    }
+    
+    .crop-stat:hover .crop-stat-value {
+        transform: scale(1.1);
+    }
+    
+    .crop-stat-label {
+        font-size: 11px;
+        color: var(--gray);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .crop-info h3 {
+        font-size: 36px;
+        margin-bottom: 25px;
+        color: var(--light);
+        position: relative;
+        display: inline-block;
+    }
+    
+    .crop-info h3::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: var(--primary);
+        border-radius: 2px;
+    }
+    
+    .crop-info p {
+        color: #bbb;
+        line-height: 1.9;
+        margin-bottom: 30px;
+        font-size: 15px;
+    }
+    
+    .crop-features {
+        list-style: none;
+    }
+    
+    .crop-features li {
+        padding: 14px 0;
+        color: #ccc;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: all 0.3s ease;
+    }
+    
+    .crop-features li.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    .crop-features li:hover {
+        color: var(--primary);
+        padding-left: 10px;
+    }
+    
+    .crop-features li i {
+        color: var(--primary);
+        width: 24px;
+        font-size: 18px;
+        transition: transform 0.3s ease;
+    }
+    
+    .crop-features li:hover i {
+        transform: scale(1.3) rotate(10deg);
+    }
+    
+    /* Progress bar for auto-rotation */
+    .crop-progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 4px;
+        background: var(--primary);
+        transition: width 0.1s linear;
+        border-radius: 0 0 0 30px;
+    }
+    
+    /* ================= SUCCESS STORIES ================= */
+    .success-stories {
+        margin: 100px 0;
+        padding: 0 8%;
+    }
+    
+    .success-stories > h2 {
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 50px;
+        position: relative;
+    }
+    
+    .success-stories > h2::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: var(--primary);
+    }
+    
+    .story-slider {
+        display: flex;
+        gap: 30px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 30px 10px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary) transparent;
+    }
+    
+    .story-slider::-webkit-scrollbar {
+        height: 8px;
+    }
+    
+    .story-slider::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+    }
+    
+    .story-slider::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 4px;
+    }
+    
+    .story-card {
+        min-width: 380px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 24px;
+        overflow: hidden;
+        scroll-snap-align: start;
+        border: 1px solid rgba(255, 179, 71, 0.15);
+        transition: all 0.4s var(--transition-smooth);
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    
+    .story-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .story-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        border-color: rgba(255, 179, 71, 0.4);
+        box-shadow: 0 25px 50px rgba(255, 179, 71, 0.15);
+    }
+    
+    .story-image {
+        height: 220px;
+        background: linear-gradient(135deg, rgba(255, 179, 71, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 70px;
+        color: rgba(255, 179, 71, 0.6);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .story-image::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.6s ease;
+    }
+    
+    .story-card:hover .story-image::after {
+        left: 100%;
+    }
+    
+    .story-content {
+        padding: 30px;
+    }
+    
+    .story-content h4 {
+        font-size: 20px;
+        margin-bottom: 15px;
+        color: var(--light);
+        transition: color 0.3s ease;
+    }
+    
+    .story-card:hover .story-content h4 {
+        color: var(--primary);
+    }
+    
+    .story-content p {
+        font-size: 14px;
+        color: var(--gray);
+        line-height: 1.8;
+        font-style: italic;
+    }
+    
+    .story-meta {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 25px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .story-meta span {
+        font-size: 13px;
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s ease;
+    }
+    
+    .story-meta span:hover {
+        transform: translateX(5px);
+    }
+    
+    /* ================= CTA SECTION ================= */
+    .agri-cta {
+        background: linear-gradient(135deg, rgba(255, 179, 71, 0.1) 0%, rgba(0, 0, 0, 0.5) 100%);
+        border-radius: 30px;
+        padding: 100px 60px;
+        text-align: center;
+        margin: 80px 8%;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 179, 71, 0.2);
+    }
+    
+    .agri-cta::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 179, 71, 0.1) 0%, transparent 70%);
+        animation: pulse 4s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 0.5; }
+        50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    .agri-cta-content {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .agri-cta h2 {
+        font-size: 42px;
+        margin-bottom: 25px;
+        color: var(--light);
+        animation: fadeInUp 0.8s ease-out;
+    }
+    
+    .agri-cta p {
+        font-size: 17px;
+        color: #bbb;
+        margin-bottom: 40px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.8;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    }
+    
+    .agri-cta .btn-primary {
+        margin-right: 20px;
+        animation: fadeInUp 0.8s ease-out 0.4s backwards;
+    }
+    
+    .agri-cta .btn-outline {
+        animation: fadeInUp 0.8s ease-out 0.6s backwards;
+    }
+    
+    /* ================= FOOTER ================= */
+    .footer {
+        background: var(--dark);
+        padding: 80px 8% 30px;
+        border-top: 1px solid rgba(255,179,71,0.1);
+    }
+    
+    .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 50px;
+        margin-bottom: 50px;
+    }
+    
+    .footer-column h3 {
+        color: var(--light);
+        font-size: 18px;
+        margin-bottom: 25px;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .footer-column h3::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background: var(--primary);
+    }
+    
+    .footer-column p {
+        color: var(--gray);
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+    
+    .social-links {
+        display: flex;
+        gap: 15px;
+    }
+    
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255,179,71,0.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s var(--transition-bounce);
+    }
+    
+    .social-icon:hover {
+        background: var(--primary);
+        color: var(--dark);
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 10px 25px rgba(255,179,71,0.3);
+    }
+    
+    .footer-links {
+        list-style: none;
+    }
+    
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+        color: var(--gray);
+        text-decoration: none;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        display: inline-block;
+        position: relative;
+    }
+    
+    .footer-links a::before {
+        content: '→';
+        position: absolute;
+        left: -20px;
+        opacity: 0;
+        transition: all 0.3s ease;
+        color: var(--primary);
+    }
+    
+    .footer-links a:hover {
+        color: var(--primary);
+        padding-left: 20px;
+    }
+    
+    .footer-links a:hover::before {
+        opacity: 1;
+        left: 0;
+    }
+    
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .contact-item strong {
+        color: var(--primary);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    .contact-item p {
+        color: var(--gray);
+        font-size: 14px;
+        margin: 0;
+    }
+    
+    .footer-bottom {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .footer-bottom p {
+        color: var(--gray);
+        font-size: 13px;
+    }
+    
+    /* ================= SCROLL TO TOP ================= */
+    .scroll-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: var(--primary);
+        color: var(--dark);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s var(--transition-bounce);
+        z-index: 3000;
+        font-size: 20px;
+        box-shadow: 0 5px 20px rgba(255,179,71,0.3);
+    }
+    
+    .scroll-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .scroll-top:hover {
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 10px 30px rgba(255,179,71,0.5);
+    }
+    
+    /* ================= MODAL ================= */
+    .service-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 5000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
+    }
+    
+    .service-modal.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .modal-content {
+        background: linear-gradient(135deg, #222 0%, #1a1a1a 100%);
+        padding: 50px;
+        border-radius: 24px;
+        max-width: 550px;
+        width: 90%;
+        border: 1px solid rgba(255, 179, 71, 0.3);
+        transform: scale(0.8) translateY(20px);
+        transition: all 0.4s var(--transition-bounce);
+        position: relative;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    }
+    
+    .service-modal.active .modal-content {
+        transform: scale(1) translateY(0);
+    }
+    
+    .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        background: none;
+        border: none;
+        color: var(--primary);
+        font-size: 32px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+    
+    .modal-close:hover {
+        transform: rotate(90deg) scale(1.1);
+        background: rgba(255,179,71,0.1);
+    }
+    
+    .modal-content h3 {
+        color: var(--primary);
+        margin-bottom: 25px;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .modal-content p {
+        color: #ccc;
+        line-height: 1.9;
+        margin-bottom: 30px;
+        font-size: 15px;
+    }
+    
+    .modal-features {
+        list-style: none;
+        margin-bottom: 30px;
+    }
+    
+    .modal-features li {
+        padding: 10px 0;
+        color: #bbb;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 14px;
+    }
+    
+    .modal-features li i {
+        color: var(--primary);
+    }
+    
+    /* ================= MOBILE MENU ================= */
+    .mobile-menu-btn {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 3000;
+        padding: 10px;
+    }
+    
+    .mobile-menu-btn span {
+        width: 25px;
+        height: 2px;
+        background: var(--primary);
+        transition: all 0.3s ease;
+    }
+    
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 1024px) {
+        .agriculture-content h1 {
+            font-size: 42px;
+        }
+        
+        .crop-content {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        
+        .crop-image-container {
+            height: 350px;
+            transform: none;
+        }
+        
+        .vine-decoration {
+            display: none;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .top-bar {
+            padding: 12px 5%;
+        }
+        
+        .top-bar ul {
+            display: none;
+        }
+        
+        .mobile-menu-btn {
+            display: flex;
+        }
+        
+        .navbar {
+            padding: 15px 5%;
+            top: 50px;
+        }
+        
+        .agriculture-hero {
+            padding: 120px 5% 60px;
+            min-height: auto;
+        }
+        
+        .agriculture-content h1 {
+            font-size: 32px;
+        }
+        
+        .agriculture-content p {
+            font-size: 15px;
+        }
+        
+        .what-we-do {
+            padding: 60px 5%;
+        }
+        
+        .what-we-do h2 {
+            font-size: 28px;
+        }
+        
+        .agri-service-grid {
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        
+        .crop-showcase {
+            padding: 40px 25px;
+            margin: 40px 5%;
+        }
+        
+        .crop-tabs {
+            gap: 10px;
+        }
+        
+        .crop-tab {
+            padding: 10px 18px;
+            font-size: 13px;
+        }
+        
+        .crop-image-container {
+            height: 280px;
+        }
+        
+        .crop-stats {
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .crop-info h3 {
+            font-size: 26px;
+        }
+        
+        .story-card {
+            min-width: 300px;
+        }
+        
+        .agri-cta {
+            padding: 60px 25px;
+            margin: 40px 5%;
+        }
+        
+        .agri-cta h2 {
+            font-size: 28px;
+        }
+        
+        .agri-cta .btn-primary {
+            margin-right: 0;
+            margin-bottom: 15px;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .agri-cta .btn-outline {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .footer {
+            padding: 60px 5% 20px;
+        }
+        
+        .bg-slider-dots {
+            bottom: 20px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .agriculture-content h1 {
+            font-size: 26px;
+        }
+        
+        .agri-icon {
+            width: 70px;
+            height: 70px;
+            font-size: 28px;
+        }
+        
+        .modal-content {
+            padding: 35px 25px;
+        }
+    }
+    
+    /* Touch device optimizations */
+    @media (hover: none) {
+        .agri-service-card:hover {
+            transform: none;
+        }
+        
+        .story-card:hover {
+            transform: none;
+        }
+    }
+    
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- ================= TOP BAR ================= -->
+<div class="top-bar">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+            <a href="#">Services ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="agriculture.html">Agriculture</a></li>
+                <li><a href="service_form.html">ICT Consultation</a></li>
+                <li><a href="academy.html">Academy</a></li>
+            </ul>
+        </li>
+        <li><a href="index.html#pt">Partners</a></li>
+        <li><a href="index.html#about-us">About us</a></li>
+        <li><a href="index.html#lml-programs-section">Programmes</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <a href="Login.html" class="login-btn">Login</a>
+</div>
+
+<!-- ================= NAVBAR ================= -->
+<div class="navbar" id="navbar">
+    <a href="index.html" class="logo" aria-label="Last Mile Links">
+        <img src="images/IMG-20260220-WA0011.jpg" alt="Last Mile Links logo">
+        <span class="text">Last Mile Links</span>
+    </a>
+</div>
+
+<!-- ================= AGRICULTURE HERO ================= -->
+<section class="agriculture-hero">
+    <!-- Background Image Slider -->
+    <div class="hero-bg-slider" id="heroBgSlider">
+        <div class="hero-bg-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('images/WhatsApp Image 2026-02-20 at 6.20.44 AM.jpeg')"></div>
+        <div class="hero-bg-slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('images/WhatsApp Image 2026-02-20 at 6.19.47 AM.jpeg')"></div>
+        <div class="hero-bg-slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('images/WhatsApp Image 2026-02-20 at 6.20.46 AM.jpeg')"></div>
+        <div class="hero-bg-slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('images/WhatsApp Image 2026-02-20 at 6.19.50 AM.jpeg')"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    
+    <div class="organic-shape organic-shape-1"></div>
+    <div class="organic-shape organic-shape-2"></div>
+    
+    <!-- Animated vine SVG -->
+    <svg class="vine-decoration" viewBox="0 0 300 500">
+        <path class="vine-path" d="M150,500 Q150,400 100,350 T150,250 T100,150 T150,50" />
+        <path class="vine-path" d="M150,500 Q200,450 180,380 T220,300 T180,200 T200,100" style="animation-delay: 0.5s" />
+        <circle cx="150" cy="50" r="5" fill="#ffb347" opacity="0.5">
+            <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="200" cy="100" r="4" fill="#ffb347" opacity="0.4">
+            <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite" delay="0.3s" />
+        </circle>
+    </svg>
+    
+    <div class="particles" id="particles"></div>
+    
+    <!-- Slider Dots -->
+    <div class="bg-slider-dots" id="bgSliderDots">
+        <div class="bg-dot active" onclick="manualBgChange(0)"></div>
+        <div class="bg-dot" onclick="manualBgChange(1)"></div>
+        <div class="bg-dot" onclick="manualBgChange(2)"></div>
+        <div class="bg-dot" onclick="manualBgChange(3)"></div>
+    </div>
+    
+    <div class="agriculture-content">
+        <h1>Cultivating Tomorrow's Harvest Today</h1>
+        <p>Join thousands of farmers transforming their livelihoods through smart agriculture. From precision farming to market access, we bridge the gap between traditional farming and modern agribusiness.</p>
+        <a href="#services" class="btn-primary">Explore Services <i class="fas fa-arrow-down"></i></a>
+    </div>
+</section>
+
+<!-- ================= SERVICES SECTION ================= -->
+<section id="services" class="what-we-do">
+    <div class="container">
+        <h2>AGRICULTURAL SOLUTIONS</h2>
+        <p class="subtitle">Comprehensive services designed for modern farmers</p>
+        
+        <div class="agri-service-grid">
+            <div class="agri-service-card" data-service="mechanization">
+                <div class="agri-icon">
+                    <i class="fas fa-tractor"></i>
+                </div>
+                <h3>Farm Mechanization</h3>
+                <p>Access modern tractors, harvesters, and processing equipment on flexible terms</p>
+            </div>
+            
+            <div class="agri-service-card" data-service="inputs">
+                <div class="agri-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h3>Quality Inputs</h3>
+                <p>Certified seeds, organic fertilizers, and crop protection solutions</p>
+            </div>
+            
+            <div class="agri-service-card" data-service="irrigation">
+                <div class="agri-icon">
+                    <i class="fas fa-water"></i>
+                </div>
+                <h3>Smart Irrigation</h3>
+                <p>Drip systems, solar pumps, and water management technologies</p>
+            </div>
+            
+            <div class="agri-service-card" data-service="training">
+                <div class="agri-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h3>Farmer Training</h3>
+                <p>Best practices in crop management, post-harvest handling, and business skills</p>
+            </div>
+            
+            <div class="agri-service-card" data-service="finance">
+                <div class="agri-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <h3>Agri-Finance</h3>
+                <p>loans, crop insurance, and investment opportunities for farmers</p>
+            </div>
+            
+            <div class="agri-service-card" data-service="market">
+                <div class="agri-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h3>Market Linkage</h3>
+                <p>Direct connections to buyers, processors, and export markets</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= CROP SHOWCASE ================= -->
+<section class="crop-showcase" id="crops">
+    <div class="crop-progress" id="cropProgress"></div>
+    <div class="crop-tabs" id="cropTabs">
+        <button class="crop-tab active" data-crop="maize">🌽 Maize</button>
+        <button class="crop-tab" data-crop="rice">🍚 Rice</button>
+        <button class="crop-tab" data-crop="cassava">🥔 Cassava</button>
+        <button class="crop-tab" data-crop="vegetables">🥬 Vegetables</button>
+        <button class="crop-tab" data-crop="poultry">🐔 Poultry</button>
+    </div>
+    
+    <div class="crop-content" id="cropContent">
+        <div class="crop-image-container">
+            <img src="images/WhatsApp Image 2026-02-20 at 6.20.44 AM.jpeg" alt="Maize Farming" class="crop-image" id="cropImage">
+            <div class="crop-stats">
+                <div class="crop-stat">
+                    <span class="crop-stat-value" id="statYield">85%</span>
+                    <span class="crop-stat-label">Yield Increase</span>
+                </div>
+                <div class="crop-stat">
+                    <span class="crop-stat-value" id="statTime">6 Months</span>
+                    <span class="crop-stat-label">To Harvest</span>
+                </div>
+                <div class="crop-stat">
+                    <span class="crop-stat-value" id="statProfit">₦450K</span>
+                    <span class="crop-stat-label">Avg Profit/Ha</span>
+                </div>
+            </div>
+        </div>
+        <div class="crop-info">
+            <h3 id="cropTitle">Premium Maize Production</h3>
+            <p id="cropDesc">Our maize program combines high-yield hybrid varieties with precision agriculture techniques. Farmers receive comprehensive support from land preparation to market access, achieving up to 85% higher yields than traditional methods.</p>
+            <ul class="crop-features" id="cropFeatures">
+                <li><i class="fas fa-check-circle"></i> Drought-resistant hybrid seeds</li>
+                <li><i class="fas fa-check-circle"></i> Mechanized planting & harvesting</li>
+                <li><i class="fas fa-check-circle"></i> Post-harvest storage solutions</li>
+                <li><i class="fas fa-check-circle"></i> Guaranteed buy-back program</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ================= SUCCESS STORIES ================= -->
+<section class="success-stories">
+    <h2>Farmer Success Stories</h2>
+    
+    <div class="story-slider" id="storySlider">
+        <div class="story-card">
+            <div class="story-image">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="story-content">
+                <h4>Abubakar's Transformation</h4>
+                <p>"From 2 hectares to 50 hectares in just 3 years. Last Mile Links provided the mechanization and market access I needed to scale."</p>
+                <div class="story-meta">
+                    <span><i class="fas fa-map-marker-alt"></i> Kaduna</span>
+                    <span>Maize Farmer</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="story-card">
+            <div class="story-image">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="story-content">
+                <h4>Mary's Poultry Empire</h4>
+                <p>"Started with 100 birds, now managing 10,000 capacity farm. The training and financing options made all the difference."</p>
+                <div class="story-meta">
+                    <span><i class="fas fa-map-marker-alt"></i> Oyo</span>
+                    <span>Poultry Farmer</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="story-card">
+            <div class="story-image">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="story-content">
+                <h4>Cooperative Success</h4>
+                <p>"Our 50-member rice cooperative secured premium processing equipment and now exports directly to international markets."</p>
+                <div class="story-meta">
+                    <span><i class="fas fa-map-marker-alt"></i> Kebbi</span>
+                    <span>Rice Cooperative</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="story-card">
+            <div class="story-image">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="story-content">
+                <h4>Young Agripreneur</h4>
+                <p>"At 24, I'm running a profitable vegetable farm supplying major supermarkets. The youth-focused program changed my life."</p>
+                <div class="story-meta">
+                    <span><i class="fas fa-map-marker-alt"></i> Lagos</span>
+                    <span>Vegetable Farmer</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= CTA SECTION ================= -->
+<section class="agri-cta">
+    <div class="agri-cta-content">
+        <h2>Ready to Transform Your Farm?</h2>
+        <p>Join over 5,000 farmers already benefiting from our integrated agricultural solutions. Get started with a free farm assessment.</p>
+        <a href="agriculture-form.html" class="btn-primary">Start Application</a>
+        <a href="contact.html" class="btn-outline">Talk to an Expert</a>
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>About Last Mile Links</h3>
+            <p>Empowering farmers with technology, financing, and market access for sustainable agricultural development.</p>
+            <div class="social-links">
+                <a href="#" class="social-icon">f</a>
+                <a href="#" class="social-icon">𝕏</a>
+                <a href="#" class="social-icon">in</a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#crops">Crop Programs</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Contact</h3>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>Email</strong>
+                    <p>agriculture@lastmilelinks.com</p>
+                </div>
+                <div class="contact-item">
+                    <strong>Phone</strong>
+                    <p>+234 800 LAST MILE</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Last Mile Links Agriculture. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- Scroll To Top -->
+<div class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()">▲</div>
+
+<script>
+    // ================= BACKGROUND SLIDER =================
+    let currentBgIndex = 0;
+    const bgSlides = document.querySelectorAll('.hero-bg-slide');
+    const bgDots = document.querySelectorAll('.bg-dot');
+    let bgInterval;
+    const bgChangeInterval = 2000; // 2 seconds as requested
+    
+    function changeBackground(index) {
+        bgSlides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            bgDots[i].classList.remove('active');
+        });
+        
+        bgSlides[index].classList.add('active');
+        bgDots[index].classList.add('active');
+        currentBgIndex = index;
+    }
+    
+    function nextBackground() {
+        const nextIndex = (currentBgIndex + 1) % bgSlides.length;
+        changeBackground(nextIndex);
+    }
+    
+    function manualBgChange(index) {
+        clearInterval(bgInterval);
+        changeBackground(index);
+        startBgSlider();
+    }
+    
+    function startBgSlider() {
+        bgInterval = setInterval(nextBackground, bgChangeInterval);
+    }
+    
+    // ================= DYNAMIC CROP DATA =================
+    const cropData = {
+        maize: {
+            title: "Premium Maize Production",
+            desc: "Our maize program combines high-yield hybrid varieties with precision agriculture techniques. Farmers receive comprehensive support from land preparation to market access, achieving up to 85% higher yields than traditional methods.",
+            image: "images/WhatsApp Image 2026-02-20 at 6.20.44 AM.jpeg",
+            stats: { yield: "85%", time: "6 Months", profit: "₦450K" },
+            features: [
+                "Drought-resistant hybrid seeds",
+                "Mechanized planting & harvesting",
+                "Post-harvest storage solutions",
+                "Guaranteed buy-back program"
+            ]
+        },
+        rice: {
+            title: "Irrigated Rice Systems",
+            desc: "Transform your rice production with our integrated irrigation and processing solutions. From nursery management to parboiling facilities, we ensure quality at every step.",
+            image: "images/WhatsApp Image 2026-02-20 at 6.19.47 AM.jpeg",
+            stats: { yield: "120%", time: "4 Months", profit: "₦680K" },
+            features: [
+                "Flood-tolerant rice varieties",
+                "Solar-powered irrigation",
+                "Combined harvester access",
+                "Direct mill linkage"
+            ]
+        },
+        cassava: {
+            title: "High-Value Cassava",
+            desc: "Tap into the industrial cassava market with our improved varieties and processing partnerships. Perfect for starch, flour, and ethanol production supply chains.",
+            image: "images/WhatsApp Image 2026-02-20 at 6.20.46 AM.jpeg",
+            stats: { yield: "95%", time: "12 Months", profit: "₦520K" },
+            features: [
+                "High-starch varieties",
+                "Mechanized harvesting",
+                "Processing partnerships",
+                "Export market access"
+            ]
+        },
+        vegetables: {
+            title: "Premium Vegetable Farming",
+            desc: "High-value vegetable production for urban markets. Greenhouse options available for year-round production of tomatoes, peppers, and leafy greens.",
+            image: "images/WhatsApp Image 2026-02-20 at 6.19.50 AM.jpeg",
+            stats: { yield: "150%", time: "3 Months", profit: "₦800K" },
+            features: [
+                "Greenhouse technology",
+                "Drip irrigation systems",
+                "Organic certification support",
+                "Supermarket contracts"
+            ]
+        },
+        poultry: {
+            title: "Modern Poultry Systems",
+            desc: "From day-old chicks to table-ready processing, our poultry program covers broilers, layers, and feed production with biosecurity protocols.",
+            image: "images/WhatsApp Image 2026-02-20 at 6.20.45 AM (1).jpeg",
+            stats: { yield: "90%", time: "6 Weeks", profit: "₦350K" },
+            features: [
+                "Automated feeding systems",
+                "Vaccination programs",
+                "Processing facility access",
+                "Cold chain logistics"
+            ]
+        }
+    };
+
+    const cropKeys = ['maize', 'rice', 'cassava', 'vegetables', 'poultry'];
+    let currentCropIndex = 0;
+    let autoRotateInterval;
+    let progressInterval;
+    const rotateInterval = 4000; // 4 seconds for crop rotation
+    
+    // Show crop function with enhanced animations
+    function showCrop(cropKey) {
+        const data = cropData[cropKey];
+        if (!data) return;
+        
+        currentCropIndex = cropKeys.indexOf(cropKey);
+        
+        // Update active tab styling
+        document.querySelectorAll('.crop-tab').forEach(tab => {
+            tab.classList.remove('active');
+            if(tab.dataset.crop === cropKey) {
+                tab.classList.add('active');
+            }
+        });
+        
+        // Animate content change
+        const content = document.getElementById('cropContent');
+        content.style.opacity = '0';
+        content.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            // Update text content
+            document.getElementById('cropTitle').textContent = data.title;
+            document.getElementById('cropDesc').textContent = data.desc;
+            
+            // Update image with preload
+            const img = document.getElementById('cropImage');
+            img.style.opacity = '0';
+            setTimeout(() => {
+                img.src = data.image;
+                img.onload = () => {
+                    img.style.opacity = '1';
+                };
+            }, 200);
+            
+            // Update stats with animation
+            const statElements = [
+                document.getElementById('statYield'),
+                document.getElementById('statTime'),
+                document.getElementById('statProfit')
+            ];
+            
+            statElements.forEach((el, index) => {
+                el.style.transform = 'scale(0)';
+                setTimeout(() => {
+                    el.textContent = Object.values(data.stats)[index];
+                    el.style.transform = 'scale(1)';
+                }, index * 100);
+            });
+            
+            // Update features with staggered animation
+            const featuresList = document.getElementById('cropFeatures');
+            featuresList.innerHTML = data.features.map((f, i) => 
+                `<li style="animation-delay: ${i * 0.1}s"><i class="fas fa-check-circle"></i> ${f}</li>`
+            ).join('');
+            
+            // Trigger feature animations
+            setTimeout(() => {
+                featuresList.querySelectorAll('li').forEach((li, i) => {
+                    setTimeout(() => li.classList.add('visible'), i * 100);
+                });
+            }, 100);
+            
+            // Fade content back in
+            content.style.opacity = '1';
+            content.style.transform = 'translateY(0)';
+        }, 300);
+    }
+    
+    // Progress bar animation
+    function startProgressBar() {
+        const progress = document.getElementById('cropProgress');
+        let width = 0;
+        clearInterval(progressInterval);
+        progressInterval = setInterval(() => {
+            width += 0.5;
+            progress.style.width = width + '%';
+            if (width >= 100) width = 0;
+        }, rotateInterval / 200);
+    }
+
+    // Initialize crop tabs
+    function initCropTabs() {
+        const tabs = document.querySelectorAll('.crop-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const crop = this.dataset.crop;
+                showCrop(crop);
+                resetAutoRotate();
+            });
+        });
+    }
+    
+    // Auto-rotate crops
+    function startAutoRotate() {
+        startProgressBar();
+        autoRotateInterval = setInterval(() => {
+            currentCropIndex = (currentCropIndex + 1) % cropKeys.length;
+            showCrop(cropKeys[currentCropIndex]);
+        }, rotateInterval);
+    }
+    
+    function resetAutoRotate() {
+        clearInterval(autoRotateInterval);
+        clearInterval(progressInterval);
+        document.getElementById('cropProgress').style.width = '0%';
+        startAutoRotate();
+    }
+
+    // ================= SERVICE MODAL =================
+    function showServiceModal(service) {
+        const serviceDetails = {
+            mechanization: {
+                title: "Farm Mechanization",
+                desc: "Access modern tractors, harvesters, and processing equipment through rental or lease-to-own options.",
+                features: ["Tractor hiring services", "Combine harvester access", "Equipment maintenance support", "Operator training included"]
+            },
+            inputs: {
+                title: "Quality Inputs",
+                desc: "We supply certified seeds, fertilizers, and agrochemicals with technical guidance for optimal application.",
+                features: ["Certified hybrid seeds", "Organic fertilizer options", "Crop protection chemicals", "Soil testing services"]
+            },
+            irrigation: {
+                title: "Smart Irrigation",
+                desc: "From drip systems to solar pumps, we design and install water solutions tailored to your farm size and crop needs.",
+                features: ["Drip irrigation design", "Solar pump installation", "Water management training", "Maintenance contracts"]
+            },
+            training: {
+                title: "Farmer Training",
+                desc: "Regular workshops and on-farm demonstrations covering modern techniques, financial literacy, and business management.",
+                features: ["Crop management courses", "Post-harvest handling", "Business skills training", "Certification programs"]
+            },
+            finance: {
+                title: "Agri-Finance",
+                desc: "Flexible micro-loans, crop insurance, and investment packages designed specifically for smallholder farmers.",
+                features: ["Quick micro-loans", "Crop insurance coverage", "Input financing", "Investment opportunities"]
+            },
+            market: {
+                title: "Market Linkage",
+                desc: "We connect you directly with processors, exporters, and retail chains, eliminating middlemen and maximizing profits.",
+                features: ["Direct buyer connections", "Fair price negotiations", "Logistics support", "Export market access"]
+            }
+        };
+        
+        const data = serviceDetails[service];
+        
+        // Remove existing modal
+        const existing = document.querySelector('.service-modal');
+        if(existing) existing.remove();
+        
+        const modal = document.createElement('div');
+        modal.className = 'service-modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <button class="modal-close">&times;</button>
+                <h3><i class="fas fa-info-circle"></i> ${data.title}</h3>
+                <p>${data.desc}</p>
+                <ul class="modal-features">
+                    ${data.features.map(f => `<li><i class="fas fa-check"></i> ${f}</li>`).join('')}
+                </ul>
+                <button onclick="window.location.href='contact.html'" class="btn-primary" style="width: 100%; justify-content: center;">
+                    Contact Us <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        // Animate in
+        requestAnimationFrame(() => {
+            modal.classList.add('active');
+        });
+        
+        // Close handlers
+        const closeBtn = modal.querySelector('.modal-close');
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            setTimeout(() => modal.remove(), 300);
+        });
+        
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal) {
+                modal.classList.remove('active');
+                setTimeout(() => modal.remove(), 300);
+            }
+        });
+        
+        // Close on escape key
+        document.addEventListener('keydown', function escapeHandler(e) {
+            if(e.key === 'Escape') {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.remove();
+                    document.removeEventListener('keydown', escapeHandler);
+                }, 300);
+            }
+        });
+    }
+
+    // Initialize service cards
+    function initServiceCards() {
+        const cards = document.querySelectorAll('.agri-service-card');
+        cards.forEach((card, index) => {
+            // Staggered entrance animation
+            setTimeout(() => {
+                card.classList.add('visible');
+            }, index * 100);
+            
+            card.addEventListener('click', function() {
+                const service = this.dataset.service;
+                showServiceModal(service);
+            });
+            
+            // Add tilt effect on mouse move
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+    }
+
+    // ================= FLOATING PARTICLES =================
+    function createParticles() {
+        const container = document.getElementById('particles');
+        if(!container) return;
+        
+        for (let i = 0; i < 25; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (12 + Math.random() * 10) + 's';
+            particle.style.width = (4 + Math.random() * 4) + 'px';
+            particle.style.height = particle.style.width;
+            container.appendChild(particle);
+        }
+    }
+
+    // ================= SCROLL ANIMATIONS =================
+    function initScrollAnimations() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.agri-service-card, .story-card').forEach(el => {
+            observer.observe(el);
+        });
+    }
+
+    // ================= NAVBAR SCROLL EFFECT =================
+    function initNavbarScroll() {
+        const navbar = document.getElementById('navbar');
+        const topBar = document.querySelector('.top-bar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+                topBar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.classList.remove('scrolled');
+                topBar.style.transform = 'translateY(0)';
+            }
+            
+            // Scroll to top button visibility
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            if (window.scrollY > 500) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        });
+    }
+
+    // ================= SCROLL TO TOP =================
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ================= MOBILE MENU =================
+    function toggleMobileMenu() {
+        const topBar = document.querySelector('.top-bar ul');
+        topBar.style.display = topBar.style.display === 'flex' ? 'none' : 'flex';
+        topBar.style.position = 'absolute';
+        topBar.style.top = '100%';
+        topBar.style.left = '0';
+        topBar.style.right = '0';
+        topBar.style.flexDirection = 'column';
+        topBar.style.background = 'rgba(0,0,0,0.95)';
+        topBar.style.padding = '20px';
+        topBar.style.backdropFilter = 'blur(10px)';
+    }
+
+    // ================= STORY SLIDER DRAG =================
+    function initStorySlider() {
+        const slider = document.getElementById('storySlider');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.style.cursor = 'grabbing';
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.style.cursor = 'grab';
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.style.cursor = 'grab';
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2;
+            slider.scrollLeft = scrollLeft - walk;
+        });
+        
+        slider.style.cursor = 'grab';
+    }
+
+    // ================= INITIALIZE EVERYTHING =================
+    document.addEventListener('DOMContentLoaded', () => {
+        // Start background slider
+        startBgSlider();
+        
+        // Create particles
+        createParticles();
+        
+        // Initialize components
+        initCropTabs();
+        initServiceCards();
+        initScrollAnimations();
+        initNavbarScroll();
+        initStorySlider();
+        
+        // Start crop auto-rotation
+        startAutoRotate();
+        
+        // Initial feature animation
+        document.querySelectorAll('.crop-features li').forEach((li, i) => {
+            setTimeout(() => li.classList.add('visible'), i * 100);
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // Add parallax effect to hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.agriculture-hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    });
+    
+    // Handle visibility change to pause animations when tab is hidden
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            clearInterval(bgInterval);
+            clearInterval(autoRotateInterval);
+            clearInterval(progressInterval);
+        } else {
+            startBgSlider();
+            startAutoRotate();
+        }
+    });
+</script>
+</body>
+</html>

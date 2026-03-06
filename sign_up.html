@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Sign Up | Last Mile Links</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="hero-section">
+            <div class="hero-overlay"></div>
+            
+            <div class="logo-section">
+                <a href="/Home_page.html" class="logo-link">
+                    <img src="images/IMG-20260220-WA0011.jpg" alt="Last Mile Links">
+                    <span>Last Mile Links</span>
+                </a>
+            </div>
+            <div class="hero-content">
+                <h1>Join Our Community</h1>
+                <p>Become part of Last Mile Links and contribute to sustainable development. Access exclusive resources, training, and mentorship programs.</p>
+                <div class="features">
+                    <div class="feature-item">
+                        <i class="fas fa-users"></i>
+                        <span>Join 1000+ Members</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Free Training</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-handshake"></i>
+                        <span>Mentorship</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copy">© 2026 Last Mile Links. All Rights Reserved.</div>
+        </div>
+
+        <div class="form-section">
+            <div class="form-wrapper">
+                <h2>Create Account</h2>
+                <p class="subtitle">Already have an account? <a href="Login.html">Login here</a></p>
+
+                <form id="registerForm">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" id="name" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" id="email" placeholder="your@email.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" id="password" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Confirm Password</label>
+                        <input type="password" id="confirmPassword" placeholder="••••••••" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Create Account</button>
+
+                    <div class="divider">or sign up with</div>
+                    
+                    <div class="social-login">
+                        <button type="button" class="btn-social">
+                            <i class="fab fa-google"></i> Google
+                        </button>
+                        <button type="button" class="btn-social">
+                            <i class="fab fa-facebook"></i> Facebook
+                        </button>
+                    </div>
+
+                    <p class="forgot-pass">
+                        Already have an account?
+                        <a href="Login.html">Login here</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="validate.js"></script>
+</body>
+</html>

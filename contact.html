@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Last Mile Links</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* ================= CONTACT HERO ================= */
+.lml-contact-hero {
+  position: relative;
+  height: 60vh;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 15px;
+  color: white;
+  overflow: hidden;
+  background: url("images/WhatsApp Image 2026-02-20 at 6.19.49 AM.jpeg") center center / cover no-repeat;
+}
+
+.lml-contact-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: 1;
+}
+
+.lml-contact-hero h1,
+.lml-contact-hero p {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+
+.lml-contact-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.lml-contact-hero p {
+  font-size: 1rem;
+  max-width: 90%;
+  opacity: 0.95;
+}
+
+/* ================= CONTACT SECTION ================= */
+.lml-contact-section {
+  padding: 60px 15px;
+  background: #f9fafc;
+}
+
+.lml-contact-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+}
+
+.lml-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lml-contact-card {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.05);
+  transition: .3s ease;
+}
+
+.lml-contact-card:hover {
+  transform: translateY(-6px);
+}
+
+.lml-contact-card i {
+  font-size: 24px;
+  color: #ff7a00;
+  margin-bottom: 10px;
+}
+
+.lml-contact-card h3 {
+  margin-bottom: 5px;
+  color: #111;
+}
+
+.lml-contact-card p {
+  color: #444;
+  font-size: 14px;
+}
+
+.lml-contact-form-wrapper {
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.05);
+}
+
+.lml-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lml-form-group {
+  position: relative;
+}
+
+.lml-form-group input,
+.lml-form-group textarea {
+  width: 100%;
+  padding: 14px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: Montserrat;
+  font-size: 14px;
+  outline: none;
+  transition: .3s;
+}
+
+.lml-form-group input:focus,
+.lml-form-group textarea:focus {
+  border-color: #ff7a00;
+}
+
+.lml-form-group label {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 13px;
+  color: #777;
+  pointer-events: none;
+  transition: .3s ease;
+  background: white;
+  padding: 0 4px;
+}
+
+.lml-form-group textarea + label {
+  top: 20px;
+}
+
+.lml-form-group input:focus + label,
+.lml-form-group input:not(:placeholder-shown) + label,
+.lml-form-group textarea:focus + label,
+.lml-form-group textarea:not(:placeholder-shown) + label {
+  top: -8px;
+  font-size: 11px;
+  color: #ff7a00;
+}
+
+.lml-submit-btn {
+  background: #ff7a00;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.lml-submit-btn:hover {
+  background: #e56d00;
+  transform: translateY(-2px);
+}
+
+.lml-success-message {
+  color: green;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+  .lml-contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .lml-contact-hero {
+    height: 50vh;
+  }
+
+  .lml-contact-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .lml-contact-hero p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .lml-contact-section {
+    padding: 50px 10px;
+  }
+
+  .lml-contact-form-wrapper {
+    padding: 25px;
+  }
+
+  .lml-contact-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lml-contact-hero {
+    height: 40vh;
+  }
+
+  .lml-contact-hero h1 {
+    font-size: 2rem;
+  }
+
+  .lml-contact-hero p {
+    font-size: 0.9rem;
+  }
+
+  .lml-contact-section {
+    padding: 40px 10px;
+  }
+
+  .lml-contact-container {
+    gap: 25px;
+  }
+
+  .lml-contact-form-wrapper {
+    padding: 20px;
+  }
+
+  .lml-contact-card {
+    padding: 15px;
+  }
+}
+
+/* ================= FOOTER RESPONSIVE ================= */
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  padding: 50px 15px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 20px 15px;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= TOP BAR ================= -->
+<div class="top-bar">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="index.html#about-us">About Us</a></li>
+    </ul>
+    <a href="#" class="login-btn">LOGIN</a>
+</div>
+
+<!-- ================= NAVBAR ================= -->
+<div class="navbar">
+    <a href="index.html" class="logo">
+        <img src="images/IMG-20260220-WA0011.jpg" alt="Last Mile Links logo">
+        <span class="text">Last Mile Links</span>
+    </a>
+</div>
+
+<!-- ================= CONTACT HERO ================= -->
+<section class="lml-contact-hero">
+    <h1>Get In Touch</h1>
+    <p>We’d love to hear from you. Let’s connect and build impact together.</p>
+</section>
+
+<!-- ================= CONTACT SECTION ================= -->
+<section class="lml-contact-section">
+    <div class="lml-contact-container">
+        <div class="lml-contact-info">
+            <div class="lml-contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Our Location</h3>
+                <p>Innovation District<br>Last Mile Links HQ</p>
+            </div>
+            <div class="lml-contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email Us</h3>
+                <p>lastmilelinks@gmail.com</p>
+            </div>
+            <div class="lml-contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Call Us</h3>
+                <p>+1 (234) XXX-XXX</p>
+            </div>
+        </div>
+        <div class="lml-contact-form-wrapper">
+            <form id="lmlContactForm" class="lml-contact-form">
+                <div class="lml-form-group">
+                    <input type="text" id="name" required placeholder=" ">
+                    <label>Full Name</label>
+                </div>
+                <div class="lml-form-group">
+                    <input type="email" id="email" required placeholder=" ">
+                    <label>Email Address</label>
+                </div>
+                <div class="lml-form-group">
+                    <input type="text" id="subject" required placeholder=" ">
+                    <label>Subject</label>
+                </div>
+                <div class="lml-form-group">
+                    <textarea id="message" rows="5" required placeholder=" "></textarea>
+                    <label>Your Message</label>
+                </div>
+                <button type="submit" class="lml-submit-btn">Send Message</button>
+                <p id="lmlFormSuccess" class="lml-success-message"></p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>About Last Mile Links</h3>
+            <p>We are committed to delivering impact and sustainable development through innovation and technology-driven solutions. Connecting communities at the last mile.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/lastmilelinks" title="Facebook" class="social-icon" target="_blank" rel="noopener noreferrer">f</a>
+                <a href="#" title="Twitter" class="social-icon" target="_blank" rel="noopener noreferrer">𝕏</a>
+                <a href="#" title="LinkedIn" class="social-icon" target="_blank" rel="noopener noreferrer">in</a>
+                <a href="#" title="Instagram" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Our Services</h3>
+            <ul class="footer-links">
+                <li><a href="ICT_Landing_page.html">ICT Consultation</a></li>
+                <li><a href="academy_landing_page.html">Online Training</a></li>
+                <li><a href="agriculture_landing_page.html">Agriculture</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Get In Touch</h3>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>📍 Location</strong>
+                    <p>Last Mile Links HQ<br>Innovation District</p>
+                </div>
+                <div class="contact-item">
+                    <strong>📧 Email</strong>
+                    <p><a href="mailto:lastmilelinks@gmail.com">lastmilelinks@gmail.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <strong>📱 Phone</strong>
+                    <p><a href="tel:+1234567890">+1 (234) XXX-XXX</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Last Mile Links. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <span>|</span>
+            <a href="#">Terms of Service</a>
+            <span>|</span>
+            <a href="#">Sitemap</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("lmlContactForm");
+  const successMessage = document.getElementById("lmlFormSuccess");
+  if (!form) return;
+
+  function isValidEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const message = document.getElementById("message").value.trim();
+    successMessage.textContent = "";
+
+    if (!name || !email || !subject || !message) {
+      successMessage.style.color = "red";
+      successMessage.textContent = "Please fill in all fields.";
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      successMessage.style.color = "red";
+      successMessage.textContent = "Please enter a valid email address.";
+      return;
+    }
+
+    successMessage.style.color = "green";
+    successMessage.textContent = "Message sent successfully! We'll get back to you soon.";
+    form.reset();
+  });
+});
+</script>
+
+</body>
+</html>
